@@ -11,7 +11,7 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private final String SECRET = "mysecretkeymysecretkeymysecretkey";
+    private final String SECRET = "ameen2gsoc";
 
     private Key getSignKey() {
         return Keys.hmacShaKeyFor(SECRET.getBytes());

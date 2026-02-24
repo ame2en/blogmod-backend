@@ -28,7 +28,15 @@ public class AuthController {
         return "User registered";
     }
 
+    @PostMapping("login")
+    public String login(@RequestBody User request){
+        User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
 
+        if(!passwordEncoder.matches(request.getPassword(), user.getPassword())){
+            throw new RuntimeException("Invalid password");
+        }
 
+        return jwtService.generateToken(user.getEmail());
+    }
 
 }
